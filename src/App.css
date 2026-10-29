@@ -1,0 +1,19 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.header {
+  height: 10vh;
+  background-color: #0fcf1f;
+}
+
+.main {
+  height: auto;
+  background-color: #572121;
+}
+
+.footer {
+  height: 10vh;
+  background-color: #121a57;
+}
