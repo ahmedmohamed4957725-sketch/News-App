@@ -1,0 +1,38 @@
+/* ===========================================================================
+   FAVORITES PAGE  (.favorites-main)
+   The old copy of .nav-list / .news-list / .news-item-* rules lived here too;
+   they are now owned by Navigation.css and NewsCard.css (this page already
+   imports Main.css + those components), so only the page container is left.
+   =========================================================================== */
+
+.favorites-main {
+  width: 100%;
+  max-width: var(--content-max);
+  margin: 0 auto;
+  padding: 20px var(--gutter) 40px; /* MOBILE */
+}
+
+.favorites-main h2 {
+  font-size: 1.35rem;
+  font-weight: 800;
+}
+
+/* TABLET */
+@media (min-width: 640px) {
+  .favorites-main {
+    padding: 28px var(--gutter) 56px;
+  }
+  .favorites-main h2 {
+    font-size: 1.6rem;
+  }
+}
+
+/* LAPTOP */
+@media (min-width: 1024px) {
+  .favorites-main {
+    padding: 36px var(--gutter) 64px;
+  }
+  .favorites-main h2 {
+    font-size: 1.9rem;
+  }
+}

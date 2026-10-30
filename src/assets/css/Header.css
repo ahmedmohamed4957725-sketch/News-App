@@ -1,0 +1,82 @@
+/* ===========================================================================
+   HEADER  (#hd)
+   ---------------------------------------------------------------------------
+   A sticky, translucent brand bar that blurs whatever scrolls underneath it.
+     MOBILE : 60px tall, 1.35rem logo text
+     TABLET : 68px tall, 1.6rem
+     LAPTOP : 76px tall, 1.8rem
+   The nav bar (Navigation.css) sticks directly under it, so these heights are
+   reused there as the `top` offset - keep the two files in sync.
+   =========================================================================== */
+
+#hd {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+
+  height: 60px; /* MOBILE */
+  padding: 0 var(--gutter);
+
+  background: rgba(9, 13, 19, 0.82);
+  border-bottom: 1px solid var(--border);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+/* the "News App" title: white -> blue -> violet gradient text */
+#hd h1 {
+  font-size: 1.35rem;
+  font-weight: 800;
+  letter-spacing: 0.6px;
+  background: linear-gradient(
+    100deg,
+    #ffffff 0%,
+    var(--accent) 55%,
+    var(--accent-2) 100%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* optional logo (Header.jsx may render an <img id="logo">) */
+#logo {
+  width: 32px;
+  height: 32px;
+  border-radius: var(--radius-sm);
+  object-fit: cover;
+}
+
+/* TABLET */
+@media (min-width: 640px) {
+  #hd {
+    height: 68px;
+  }
+  #hd h1 {
+    font-size: 1.6rem;
+  }
+  #logo {
+    width: 38px;
+    height: 38px;
+  }
+}
+
+/* LAPTOP */
+@media (min-width: 1024px) {
+  #hd {
+    height: 76px;
+  }
+  #hd h1 {
+    font-size: 1.8rem;
+    letter-spacing: 1px;
+  }
+  #logo {
+    width: 42px;
+    height: 42px;
+  }
+}

@@ -1,0 +1,173 @@
+/* ===========================================================================
+   NEWS APP - GLOBAL THEME (dark / modern / responsive)
+   ---------------------------------------------------------------------------
+   Devices handled (mobile-first):
+     MOBILE  : the base rules below            (phones, < 640px)
+     TABLET  : @media (min-width: 640px)       (640px - 1023px)
+     LAPTOP  : @media (min-width: 1024px)      (>= 1024px)
+
+   Mobile-first means the plain rules ARE the phone design, and the two media
+   queries progressively upgrade the tablet and the laptop. Nothing has to be
+   un-done with max-width queries.
+   =========================================================================== */
+
+/* The app shows Arabic news, so load the "Zain" Arabic font.
+   @import must be the very first statement in the file. */
+@import url("https://fonts.googleapis.com/css2?family=Zain:wght@200;300;400;700;800;900&display=swap");
+
+/* ---------------------------------------------------------------------------
+   1. DESIGN TOKENS
+   Every colour / radius / shadow lives here, so the whole app can be re-themed
+   by editing this one block.
+   --------------------------------------------------------------------------- */
+:root {
+  /* tell the browser we are a dark UI (dark scrollbars, form controls, ...) */
+  color-scheme: dark;
+
+  /* surfaces: from the page background up to raised cards */
+  --bg: #070b11;
+  --bg-soft: #0d141d;
+  --surface: #131c27;
+  --surface-hover: #1a2635;
+  --border: #22303f;
+  --border-strong: #33475d;
+
+  /* text: primary / secondary / faint */
+  --text: #e9eff7;
+  --text-muted: #93a4b8;
+  --text-dim: #64748b;
+
+  /* brand accent + a friendly danger colour for the favourite heart */
+  --accent: #4f8cff;
+  --accent-2: #7c5cff;
+  --accent-soft: rgba(79, 140, 255, 0.16);
+  --favorite: #ff5470;
+
+  /* shape + depth */
+  --radius-sm: 10px;
+  --radius: 16px;
+  --radius-pill: 999px;
+  --shadow-sm: 0 4px 16px rgba(0, 0, 0, 0.35);
+  --shadow: 0 14px 40px rgba(0, 0, 0, 0.5);
+
+  /* layout */
+  --content-max: 1200px; /* laptop content width */
+  --gutter: 16px; /* mobile side padding */
+
+  --font-sans:
+    "Zain", system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+}
+
+/* ---------------------------------------------------------------------------
+   2. RESET
+   --------------------------------------------------------------------------- */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+
+
+body {
+  min-height: 100vh;
+  font-family: var(--font-sans);
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--text);
+  background-color: var(--bg);
+  /* two soft glows so the dark background does not look flat */
+  background-image:
+    radial-gradient(
+      900px 500px at 15% -10%,
+      rgba(79, 140, 255, 0.14),
+      transparent 60%
+    ),
+    radial-gradient(
+      800px 500px at 100% 0%,
+      rgba(124, 92, 255, 0.1),
+      transparent 55%
+    );
+  background-attachment: fixed;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* form controls should inherit the app font instead of the OS default */
+button,
+input,
+textarea,
+select {
+  font: inherit;
+  color: inherit;
+}
+
+h1,
+h2,
+h3 {
+  font-weight: 700;
+  line-height: 1.25;
+  letter-spacing: 0.2px;
+}
+h2 {
+  font-size: 1.35rem;
+}
+h3 {
+  font-size: 1.05rem;
+}
+
+/* visible, on-brand keyboard focus for accessibility */
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+  border-radius: 6px;
+}
+
+/* dark scrollbar to match the theme (laptop / desktop mainly) */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-soft);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--border-strong);
+  border-radius: var(--radius-pill);
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #40566f;
+}
+
+/* ---------------------------------------------------------------------------
+   3. TYPE SCALE PER DEVICE
+   --------------------------------------------------------------------------- */
+
+/* TABLET: slightly more generous spacing + a bigger page gutter */
+@media (min-width: 640px) {
+  :root {
+    --gutter: 24px;
+  }
+}
+
+/* LAPTOP: widest gutter */
+@media (min-width: 1024px) {
+  :root {
+    --gutter: 32px;
+  }
+  body {
+    font-size: 17px;
+  }
+}

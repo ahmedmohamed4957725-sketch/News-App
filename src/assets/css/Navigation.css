@@ -1,0 +1,124 @@
+/* ===========================================================================
+   NAVIGATION  (.nav / .nav-list)
+   ---------------------------------------------------------------------------
+   Category pills. The current route gets `.active` (set in Navigation.jsx
+   from `location.pathname`).
+
+     MOBILE : one single row that scrolls sideways with a finger swipe
+              (no wrapping, no shrinking - keeps every pill tappable)
+     TABLET : enough width, so the pills wrap and centre
+     LAPTOP : one centred row inside the page gutter
+
+   The bar is sticky directly below the header, so `top` MUST equal the header
+   heights used in Header.css (60 / 68 / 76px).
+   =========================================================================== */
+
+.nav {
+  position: sticky;
+  top: 60px; /* MOBILE: sits right under the 60px header */
+  z-index: 40;
+
+  background: rgba(11, 17, 25, 0.9);
+  border-bottom: 1px solid var(--border);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+.nav-list {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  list-style: none;
+  padding: 10px var(--gutter);
+
+  /* MOBILE: allow horizontal swipe when the pills do not fit */
+  overflow-x: auto;
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* old Edge/IE */
+  -webkit-overflow-scrolling: touch;
+}
+
+/* hide the horizontal scrollbar (still scrollable with a swipe) */
+.nav-list::-webkit-scrollbar {
+  display: none;
+}
+
+.nav-list li {
+  flex: 0 0 auto; /* never squash a pill, let the row scroll instead */
+}
+
+/* every pill is wrapped in a <Link>, keep the wrapper tight around it */
+.nav-list li > a {
+  display: inline-flex;
+}
+
+.nav-list button {
+  padding: 8px 14px;
+  font-family: var(--font-sans);
+  font-size: 0.88rem;
+  font-weight: 500;
+  white-space: nowrap;
+
+  color: var(--text-muted);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-pill);
+  cursor: pointer;
+
+  transition:
+    color 0.2s ease,
+    background 0.2s ease,
+    border-color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.nav-list button:hover {
+  color: var(--text);
+  background: var(--surface-hover);
+  border-color: var(--border-strong);
+  transform: translateY(-1px);
+}
+
+.nav-list button:active {
+  transform: translateY(0);
+}
+
+/* the pill for the page we are currently on */
+.nav-list button.active {
+  color: #fff;
+  background: linear-gradient(135deg, var(--accent), var(--accent-2));
+  border-color: transparent;
+  box-shadow: 0 8px 22px var(--accent-soft);
+}
+
+/* TABLET: room to wrap + centre instead of scrolling */
+@media (min-width: 640px) {
+  .nav {
+    top: 68px; /* matches the tablet header height */
+  }
+  .nav-list {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    padding: 12px var(--gutter);
+    overflow-x: visible;
+  }
+}
+
+/* LAPTOP */
+@media (min-width: 1024px) {
+  .nav {
+    top: 76px; /* matches the laptop header height */
+  }
+  .nav-list {
+    max-width: var(--content-max);
+    margin: 0 auto;
+    padding: 14px var(--gutter);
+    gap: 12px;
+  }
+  .nav-list button {
+    font-size: 0.95rem;
+    padding: 9px 18px;
+  }
+}

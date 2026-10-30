@@ -1,19 +1,24 @@
-* {
-  margin: 0;
-  padding: 0;
+/* ===========================================================================
+   APP SHELL
+   ---------------------------------------------------------------------------
+   The routed pages render as direct children of #root:
+     <header id="hd">  <nav class="nav">?  <main>  <footer id="ft">
+
+   Turning #root into a full-height flex column with `flex: 1` on <main>
+   pins the footer to the bottom of the screen even when a page has very
+   little content - on every device height (mobile / tablet / laptop).
+   =========================================================================== */
+
+#root {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 }
 
-.header {
-  height: 10vh;
-  background-color: #0fcf1f;
-}
-
-.main {
-  height: auto;
-  background-color: #572121;
-}
-
-.footer {
-  height: 10vh;
-  background-color: #121a57;
+/* <main id="mn">, <main class="search-main">, <main class="favorites-main">
+   all grow to fill whatever space is left between header/nav and footer.
+   Their own files handle width, centring and padding. */
+main {
+  flex: 1 1 auto;
+  width: 100%;
 }

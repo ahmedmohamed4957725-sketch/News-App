@@ -1,0 +1,39 @@
+/* ===========================================================================
+   FOOTER  (#ft)
+   Sits at the bottom thanks to `main { flex: 1 }` in App.css.
+   MOBILE : compact, smaller text
+   TABLET : more padding
+   LAPTOP : widest padding
+   =========================================================================== */
+
+#ft {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 20px var(--gutter); /* MOBILE */
+
+  color: var(--text-dim);
+  font-size: 0.82rem;
+  letter-spacing: 0.3px;
+  text-align: center;
+
+  background: var(--bg-soft);
+  border-top: 1px solid var(--border);
+}
+
+/* TABLET */
+@media (min-width: 640px) {
+  #ft {
+    padding: 24px var(--gutter);
+    font-size: 0.88rem;
+  }
+}
+
+/* LAPTOP */
+@media (min-width: 1024px) {
+  #ft {
+    padding: 28px var(--gutter);
+    font-size: 0.9rem;
+  }
+}

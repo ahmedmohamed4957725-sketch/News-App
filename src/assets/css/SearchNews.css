@@ -1,0 +1,82 @@
+/* ===========================================================================
+   SEARCH FORM  (.search)
+   ---------------------------------------------------------------------------
+   MOBILE : the input stacks on top of the button (both full width)
+   TABLET : input + button sit side by side in one pill row
+   LAPTOP : same row, centred and capped at 620px
+   =========================================================================== */
+
+.search {
+  display: flex;
+  flex-direction: column; /* MOBILE: stacked */
+  gap: 10px;
+  width: 100%;
+  max-width: 620px;
+  margin: 20px auto 0;
+}
+
+.search input {
+  width: 100%;
+  padding: 12px 16px;
+
+  color: var(--text);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-pill);
+
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease,
+    background 0.2s ease;
+}
+
+.search input::placeholder {
+  color: var(--text-dim);
+}
+
+.search input:focus {
+  outline: none;
+  background: var(--surface-hover);
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px var(--accent-soft);
+}
+
+.search-btn {
+  padding: 12px 22px;
+  font-weight: 600;
+  cursor: pointer;
+
+  color: #fff;
+  background: linear-gradient(135deg, var(--accent), var(--accent-2));
+  border: 1px solid transparent;
+  border-radius: var(--radius-pill);
+  box-shadow: 0 8px 20px var(--accent-soft);
+
+  transition:
+    filter 0.2s ease,
+    transform 0.2s ease;
+}
+
+.search-btn:hover {
+  filter: brightness(1.1);
+  transform: translateY(-1px);
+}
+
+.search-btn:active {
+  transform: translateY(0);
+}
+
+/* TABLET + LAPTOP: put the input and the button on the same row */
+@media (min-width: 640px) {
+  .search {
+    flex-direction: row;
+    align-items: center;
+    gap: 12px;
+  }
+  .search input {
+    flex: 1 1 auto;
+  }
+  .search-btn {
+    flex: 0 0 auto;
+  }
+}

@@ -1,0 +1,40 @@
+/* ===========================================================================
+   SEARCH PAGE  (.search-main)
+   Same container logic as the home page (#mn in Main.css): full width on
+   mobile, capped at 1200px and centred on the laptop.
+   The .news-list grid + cards come from NewsCard.css.
+   =========================================================================== */
+
+.search-main {
+  width: 100%;
+  max-width: var(--content-max);
+  margin: 0 auto;
+  padding: 20px var(--gutter) 40px; /* MOBILE */
+}
+
+.search-main h2 {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--text);
+
+}
+
+/* TABLET */
+@media (min-width: 640px) {
+  .search-main {
+    padding: 28px var(--gutter) 56px;
+  }
+  .search-main h2 {
+    font-size: 1.5rem;
+  }
+}
+
+/* LAPTOP */
+@media (min-width: 1024px) {
+  .search-main {
+    padding: 36px var(--gutter) 64px;
+  }
+  .search-main h2 {
+    font-size: 1.8rem;
+  }
+}

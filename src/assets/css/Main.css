@@ -1,0 +1,109 @@
+/* ===========================================================================
+   MAIN PAGE LAYOUT  (<main id="mn"> on the home / category pages)
+   The news grid itself lives in NewsCard.css, together with the card.
+   =========================================================================== */
+
+/* ---------------------------------------------------------------------------
+   Zain font utility classes (used by NewsCard.jsx: .zain-bold / .zain-light)
+   --------------------------------------------------------------------------- */
+.zain-extralight {
+  font-family: "Zain", sans-serif;
+  font-weight: 200;
+  font-style: normal;
+}
+
+.zain-light {
+  font-family: "Zain", sans-serif;
+  font-weight: 300;
+  font-style: normal;
+}
+
+.zain-regular {
+  font-family: "Zain", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.zain-bold {
+  font-family: "Zain", sans-serif;
+  font-weight: 700;
+  font-style: normal;
+}
+
+.zain-extrabold {
+  font-family: "Zain", sans-serif;
+  font-weight: 800;
+  font-style: normal;
+}
+
+.zain-black {
+  font-family: "Zain", sans-serif;
+  font-weight: 900;
+  font-style: normal;
+}
+
+.zain-light-italic {
+  font-family: "Zain", sans-serif;
+  font-weight: 300;
+  font-style: italic;
+}
+
+.zain-regular-italic {
+  font-family: "Zain", sans-serif;
+  font-weight: 400;
+  font-style: italic;
+}
+
+/* ---------------------------------------------------------------------------
+   Page container
+   MOBILE : full width, 16px side padding
+   TABLET : wider padding
+   LAPTOP : capped at 1200px and centred, so lines never get too long
+   --------------------------------------------------------------------------- */
+#mn {
+  width: 100%;
+  max-width: var(--content-max);
+  margin: 0 auto;
+  padding: 20px var(--gutter) 40px; /* MOBILE */
+}
+
+/* section title (e.g. "Latest News" / the chosen category) */
+#mn > section > h2 {
+  position: relative;
+  display: inline-block;
+  padding-bottom: 8px;
+  font-size: 1.35rem;
+  font-weight: 800;
+}
+
+/* short gradient underline under the title */
+#mn > section > h2::after {
+  content: "";
+  position: absolute;
+  inset-inline-start: 0;
+  bottom: 0;
+  width: 48px;
+  height: 3px;
+  border-radius: var(--radius-pill);
+  background: linear-gradient(90deg, var(--accent), var(--accent-2));
+}
+
+/* TABLET */
+@media (min-width: 640px) {
+  #mn {
+    padding: 28px var(--gutter) 56px;
+  }
+  #mn > section > h2 {
+    font-size: 1.6rem;
+  }
+}
+
+/* LAPTOP */
+@media (min-width: 1024px) {
+  #mn {
+    padding: 36px var(--gutter) 64px;
+  }
+  #mn > section > h2 {
+    font-size: 1.9rem;
+  }
+}
